@@ -247,7 +247,7 @@ class ImapLibrary(object):
 
         if len(urls) > link_index:
             resp = urlopen(urls[link_index])
-            content_type = resp.headers.getheader('content-type')
+            content_type = resp.headers.get_content_charset()
             if content_type:
                 enc = content_type.split('charset=')[-1]
                 return ustr(resp.read(), enc)
